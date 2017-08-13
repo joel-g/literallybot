@@ -1,7 +1,10 @@
 import re
 import praw
 import time
+from pygame import mixer
 
+mixer.init()
+alert=mixer.Sound('bell.wav')
 
 history = 'commented.txt'
 
@@ -18,7 +21,6 @@ def authenticate():
 def literallybot(reddit):
 
     print("Getting 500 comments...\n")
-
     for comment in reddit.subreddit('explainlikeimfive').comments(limit = 500):
         match = re.findall("literally", comment.body)
         if match:
@@ -35,6 +37,7 @@ def literallybot(reddit):
                 else:
                     print('     Found new comment by ' + comment.author.name + '\n')
                     comment.reply(reply)
+                    alert.play()
 
                     file_obj_r.close()
                     file_obj_w = open(history,'a+')
