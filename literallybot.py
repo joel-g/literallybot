@@ -5,7 +5,7 @@ from pygame import mixer
 
 mixer.init()
 alert=mixer.Sound('bell.wav')
-
+BLACKLIST = {'literally'}
 history = 'commented.txt'
 
 reply = "Did you really 'literally'?\nConsider reading [this](http://writingexplained.org/literally-vs-figuratively-difference) to make sure you're using 'literally' correctly."
@@ -21,7 +21,7 @@ def authenticate():
 def literallybot(reddit):
 
     print("Getting 500 comments...\n")
-    for comment in reddit.subreddit('explainlikeimfive').comments(limit = 500):
+    for comment in reddit.subreddit('all').comments(limit = 500):
         match = re.findall("literally", comment.body)
         if match:
             print("'Literally' found in comment with comment ID: " + comment.id)
@@ -30,10 +30,6 @@ def literallybot(reddit):
             if comment.id not in file_obj_r.read().splitlines():
                 if comment.author.name == reddit.user.me():
                     print('     Skipping my own comment...\n')
-                    file_obj_r.close()
-                    file_obj_w = open(history,'a+')
-                    file_obj_w.write(comment.id + '\n')
-                    file_obj_w.close()
                 else:
                     print('     Found new comment by ' + comment.author.name + '\n')
                     comment.reply(reply)
