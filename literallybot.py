@@ -8,7 +8,7 @@ alert=mixer.Sound('bell.wav')
 
 history = 'commented.txt'
 
-reply = "Did you really mean to say literally?\nConsider reading [this](http://writingexplained.org/literally-vs-figuratively-difference) to make sure you're using 'literally' correctly."
+reply = "Did you really 'literally'?\nConsider reading [this](http://writingexplained.org/literally-vs-figuratively-difference) to make sure you're using 'literally' correctly."
 
 def authenticate():
 
