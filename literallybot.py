@@ -1,9 +1,4 @@
-from urllib.parse import urlparse
-from bs4 import BeautifulSoup
-
 import re
-# import requests
-import bs4
 import praw
 import time
 
@@ -24,7 +19,7 @@ def literallybot(reddit):
 
     print("Getting 500 comments...\n")
 
-    for comment in reddit.subreddit('test').comments(limit = 500):
+    for comment in reddit.subreddit('explainlikeimfive').comments(limit = 500):
         match = re.findall("literally", comment.body)
         if match:
             print("'Literally' found in comment with comment ID: " + comment.id)
