@@ -1,2 +1,2 @@
 # literallybot
-A bot to combat the misuse of the word "literally" on Reddit
+A python script that checks comments on Reddit for the word "literally" and comments with a link explaining how and when to correctly use the word "literally".
